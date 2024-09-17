@@ -4,6 +4,7 @@ import { Home } from "lucide-react";
 import SignupPage from "../pages/SignupPage";
 import LoginPage from "../pages/LoginPage";
 import AuthUser from "./protectedRoutes/AuthUser";
+import ProfilePage from "../pages/user/UserProfile";
 
 
 export const router = createBrowserRouter([
@@ -30,6 +31,12 @@ export const router = createBrowserRouter([
         path: "user",
         element: <AuthUser />,
 
+        children: [
+            {
+                path: "profile",
+                element: <ProfilePage/>
+            }
+        ]
       }
     ],
   },
