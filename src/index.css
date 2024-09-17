@@ -1,3 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Matemasie&family=Mogra&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.home span {
+  font-family: "Mogra", system-ui;
+}
+.home h1,
+h3 {
+  font-family: "Roboto", sans-serif;
+}
+.custom-rouded {
+  border-radius: 0 0 50px 50px;
+}
+.custom-btn-rouded {
+  border-radius: 5px 20px;
+}
