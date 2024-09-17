@@ -25,7 +25,7 @@ const Header = () => {
 
         {/* Join button */}
         <div className="icon flex gap-5">
-          <button className="bg-orange-400 font-semibold px-2 py-1 rounded-md sm:py-2 sm:px-3">
+          <button  className="bg-orange-400 font-semibold px-2 py-1 rounded-md sm:py-2 sm:px-3">
             Join us
           </button>
           {changeMenu ? (
@@ -35,7 +35,7 @@ const Header = () => {
           )}
         </div>
       </div>
-      {/* Mobile menu */}
+    
       {/* Mobile Menu */}
       {changeMenu && (
         <ul className="absolute top-[100%] left-0 w-full bg-white shadow-lg flex flex-col items-center gap-6 py-6 font-semibold sm:hidden transition duration-300 ease-in-out">
