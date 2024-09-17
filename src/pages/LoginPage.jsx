@@ -18,7 +18,7 @@ export default function LoginPage() {
         url: "/user/login",
         data,
       });
-      navigate()
+      navigate('/user/profile')
       toast.success("Login success");
     } catch (error) {
       console.log(error);
