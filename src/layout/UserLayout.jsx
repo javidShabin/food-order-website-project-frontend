@@ -9,6 +9,7 @@ import { clearUser, saveUser } from "../redux/features/userSlice";
 const UserLayout = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const [loading, setLoading] = useState(false);
   const { isUserExist } = useSelector((state) => state.user); // Corrected 'isUserExists' to 'isUserExist'
 
   const checkUser = async () => {
@@ -18,6 +19,7 @@ const UserLayout = () => {
         url: "/user/check-user",
       });
       dispatch(saveUser());
+      setLoading(true);
     } catch (error) {
       dispatch(clearUser()); // If loggin error call the clear fuction false
       console.log(error);
@@ -29,11 +31,13 @@ const UserLayout = () => {
   }, [location.pathname]);
 
   return (
-    <>
-      {isUserExist ? <UserHeader /> : <Header />}
+    loading && (
+      <div>
+        {isUserExist ? <UserHeader /> : <Header />}
 
-      <Outlet />
-    </>
+        <Outlet />
+      </div>
+    )
   );
 };
 
