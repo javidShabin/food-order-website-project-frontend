@@ -49,7 +49,7 @@ const ProfilePage = () => {
 
   return (
     <>
-      <div className="relative">
+      <div className="relative flex justify-center ">
         <div className="flex justify-center items-center w-full h-[91vh]">
           <div className="container py-7 flex flex-col items-center mt-5 w-[90%] shadow-lg rounded-lg ">
             <div>
@@ -79,7 +79,7 @@ const ProfilePage = () => {
 
         {/* Profile editing section */}
         {showEdit && (
-          <div className="container absolute top-0 w-full h-full backdrop-blur-sm bg-black bg-opacity-50 flex justify-center items-center">
+          <div className="container absolute top-0 w-[100%] h-full backdrop-blur-sm bg-black bg-opacity-50 flex justify-center items-center">
             <div className="relative bg-white w-[90%] md:w-[50%] p-5 rounded-lg">
               <X
                 className="absolute top-3 right-3 cursor-pointer text-black"
