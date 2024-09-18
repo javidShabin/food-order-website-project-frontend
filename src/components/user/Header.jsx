@@ -30,7 +30,7 @@ const UserHeader = () => {
         </ul>
 
         {/* Icons */}
-        <div className="icon flex gap-10">
+        <div className="icon flex gap-5 md:gap-10">
           <Link to="/cart">
             <ShoppingBag />
           </Link>
