@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ProfileEdit = () => {
+const ProfileEdit = ({userId}) => {
   return (
     <div>
-      Profile edite
+      {userId}
     </div>
   )
 }

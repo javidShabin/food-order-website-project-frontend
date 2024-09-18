@@ -85,7 +85,7 @@ const ProfilePage = () => {
                 className="absolute top-3 right-3 cursor-pointer text-black"
                 onClick={() => setShowEdite(false)}
               />
-              <ProfileEdit/>
+              <ProfileEdit userId={isUser._id} />
             </div>
           </div>
         )}
