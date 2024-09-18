@@ -16,3 +16,28 @@ h3 {
 .custom-btn-rouded {
   border-radius: 5px 20px;
 }
+.category .container {
+  overflow-x: scroll;
+}
+.category .wrapper::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.category .wrapper:hover::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.category .wrapper::-webkit-scrollbar-track {
+  background: linear-gradient(to bottom, #fff7e0, #fee6c7);
+  border-radius: 10px;
+}
+.category .wrapper::-webkit-scrollbar-thumb {
+  background: rgb(244, 147, 11);
+  border-radius: 10px;
+}
+.category .wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(246, 128, 59, 0.9);
+}
+.category .wrapper::-webkit-scrollbar-thumb:active {
+  background: rgba(246, 128, 59, 0.9);
+}

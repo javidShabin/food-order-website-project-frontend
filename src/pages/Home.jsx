@@ -1,5 +1,6 @@
 import React from "react";
 import { home } from "../assets";
+import FilteredItems from "../components/FilteredItems";
 
 const Home = () => {
   return (
@@ -41,6 +42,8 @@ const Home = () => {
           </div>
         </div>
       </main>
+      {/* Filtered items section */}
+      <FilteredItems/>
     </>
   );
 };
