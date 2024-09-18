@@ -77,8 +77,9 @@ const ProfilePage = () => {
           </div>
         </div>
 
+        {/* Profile editing section */}
         {showEdit && (
-          <div className="container absolute top-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+          <div className="container absolute top-0 w-full h-full backdrop-blur-sm bg-black bg-opacity-50 flex justify-center items-center">
             <div className="relative bg-white w-[90%] md:w-[50%] p-5 rounded-lg">
               <X
                 className="absolute top-3 right-3 cursor-pointer text-black"
