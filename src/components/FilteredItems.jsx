@@ -43,11 +43,11 @@ const FilteredItems = () => {
   return (
     <>
       <div className="category container mx-auto p-4 relative cursor-pointer ">
-        <h2 className="text-2xl font-bold mb-4 text-center">
+        <h2 className="text-2xl font-bold mb-4 text-left mt-8">
           What's on your mind
         </h2>
 
-        <main className="wrapper overflow-x-scroll sm:overflow-x-auto whitespace-nowrap p-4 rounded-lg shadow-md">
+        <main className="wrapper overflow-x-scroll sm:overflow-x-auto whitespace-nowrap p-4 rounded-lg shadow-md mt-6">
           <div className=" grid grid-cols-7 gap-56 space-x-4 w-full ">
             {cardDatas.map((items) => (
               <div

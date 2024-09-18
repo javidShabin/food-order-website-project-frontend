@@ -5,7 +5,7 @@ import FilteredItems from "../components/FilteredItems";
 const Home = () => {
   return (
     <>
-      <main className="home bg-gray-100 py-6 sm:py-10 md:py-16 lg:py-7 custom-rouded">
+      <main className="home bg-gray-100 py-6 sm:py-10 md:py-16 lg:py-7 custom-rouded xl:h-[80vh] ">
         <div className="container w-[95%] mx-auto px-4 flex flex-col items-center md:flex-row justify-between">
           {/* Text Section */}
           <div className="text-center sm:text-justify space-y-3 md:space-y-7 lg:space-y-8">
