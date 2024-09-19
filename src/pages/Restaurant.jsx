@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { axiosInstants } from "../config/axiosInstants";
 import { Link } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Restaurant = () => {
   const [restData, setRestData] = useState([]);
+
+  // navigate function for navigate restaurant detauls page
+  const navigate = useNavigate()
 
   const getRestaurants = async () => {
     try {
@@ -37,7 +41,7 @@ const Restaurant = () => {
           <h2>{restaurant.name}</h2>
           <h3>{restaurant.address}</h3>
           <div>
-            <button className="py-1 px-4 bg-orange-400 font-semibold text-white rounded-md mt-4 hover:bg-orange-500 transition duration-300 ease-in-out">
+            <button onClick={()=>{navigate(`/user/res-details${restaurant._id}`)}} className="py-1 px-4 bg-orange-400 font-semibold text-white rounded-md mt-4 hover:bg-orange-500 transition duration-300 ease-in-out">
               Explore
             </button>
           </div>
