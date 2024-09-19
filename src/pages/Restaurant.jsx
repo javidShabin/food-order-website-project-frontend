@@ -38,9 +38,7 @@ const Restaurant = () => {
           <h3>{restaurant.address}</h3>
           <div>
             <Link to={`/user/res-details`}>
-              <button
-                className="py-1 px-2 bg-orange-400 font-semibold rounded-md mt-4"
-              >
+              <button className="py-1 px-4 bg-orange-400 font-semibold text-white rounded-md mt-4 hover:bg-orange-500 transition duration-300 ease-in-out">
                 Explore
               </button>
             </Link>
