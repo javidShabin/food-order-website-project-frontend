@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { axiosInstants } from "../config/axiosInstants";
+import { Link } from "lucide-react";
 
 const Restaurant = () => {
   const [restData, setRestData] = useState([]);
 
-  const getRestaurant = () => {
-    alert("Redy")
-  }
   const getRestaurants = async () => {
     try {
       const response = await axiosInstants({
@@ -39,9 +37,13 @@ const Restaurant = () => {
           <h2>{restaurant.name}</h2>
           <h3>{restaurant.address}</h3>
           <div>
-            <button onClick={()=>{getRestaurant(restaurant._id)}} className="py-1 px-2 bg-orange-400 font-semibold rounded-md mt-4">
-              Explore
-            </button>
+            <Link to={`/user/res-details`}>
+              <button
+                className="py-1 px-2 bg-orange-400 font-semibold rounded-md mt-4"
+              >
+                Explore
+              </button>
+            </Link>
           </div>
         </div>
       ))}

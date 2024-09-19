@@ -5,6 +5,7 @@ import LoginPage from "../pages/LoginPage";
 import AuthUser from "./protectedRoutes/AuthUser";
 import ProfilePage from "../pages/user/UserProfile";
 import Home from "../pages/Home";
+import ResDetails from "../pages/user/ResDetails";
 
 
 export const router = createBrowserRouter([
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
             {
                 path: "profile",
                 element: <ProfilePage/>
+            },
+            {
+                path: "res-details",
+                element: <ResDetails/>
             }
         ]
       }
