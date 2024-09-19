@@ -3,7 +3,7 @@ import React from 'react'
 const ProfileEdit = ({userId}) => {
   return (
     <div>
-      {userId}
+      Edite user profile
     </div>
   )
 }
