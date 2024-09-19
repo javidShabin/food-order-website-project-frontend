@@ -37,10 +37,9 @@ const Restaurant = () => {
           <h2>{restaurant.name}</h2>
           <h3>{restaurant.address}</h3>
           <div>
-            <Link to={`/user/res-details`}>
-            Explore
-              
-            </Link>
+            <button className="py-1 px-4 bg-orange-400 font-semibold text-white rounded-md mt-4 hover:bg-orange-500 transition duration-300 ease-in-out">
+              Explore
+            </button>
           </div>
         </div>
       ))}
