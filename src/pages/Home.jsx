@@ -21,7 +21,7 @@ const Home = () => {
               </h3>
             </div>
             <p className="md:w-[450px] lg:w-[550px] xl:w-[600px] font-medium text-gray-600 ">
-              Craving something special? At <span className="text-orange-400">FOODZ</span>, we deliver top
+              Craving something special? At <span className="text-orange-400 font-semibold ">FOODZ</span>, we deliver top
               dishes from local restaurants right to your door. Easy ordering,
               secure payment, and fast delivery—your favorite meal is just a
               click away!
