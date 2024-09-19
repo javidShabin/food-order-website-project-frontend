@@ -1,6 +1,7 @@
 import React from "react";
 import { cafe, delivery, food, home } from "../assets";
 import FilteredItems from "../components/FilteredItems";
+import Restaurant from "./Restaurant";
 
 const Home = () => {
   return (
@@ -54,16 +55,38 @@ const Home = () => {
         <div className="flex justify-around text-center mt-9 ">
           <div>
             <img src={cafe} className="w-[50px] sm:w-[70px] mx-auto" />
-            <h3 className="mt-2 sm:mt-8 text-center font-semibold text-[15px] sm:text-[18px] "><span className="text-orange-400 text-[20px] sm:text-[25px] ">1</span> Select Restaurant</h3>
+            <h3 className="mt-2 sm:mt-8 text-center font-semibold text-[15px] sm:text-[18px] ">
+              <span className="text-orange-400 text-[20px] sm:text-[25px] ">
+                1
+              </span>{" "}
+              Select Restaurant
+            </h3>
           </div>
           <div>
             <img src={food} className="w-[50px] sm:w-[70px] mx-auto" />
-            <h3 className="mt-2 sm:mt-8 text-center font-semibold text-[15px] sm:text-[18px] "><span className="text-orange-400 text-[20px] sm:text-[25px] ">2</span> Select Menu</h3>
+            <h3 className="mt-2 sm:mt-8 text-center font-semibold text-[15px] sm:text-[18px] ">
+              <span className="text-orange-400 text-[20px] sm:text-[25px] ">
+                2
+              </span>{" "}
+              Select Menu
+            </h3>
           </div>
           <div>
             <img src={delivery} className="w-[50px] sm:w-[70px] mx-auto" />
-            <h3 className="mt-2 sm:mt-8 text-center font-semibold text-[15px] sm:text-[18px] "><span className="text-orange-400 text-[20px] sm:text-[25px] ">3</span> Wait for Delivery</h3>
+            <h3 className="mt-2 sm:mt-8 text-center font-semibold text-[15px] sm:text-[18px] ">
+              <span className="text-orange-400 text-[20px] sm:text-[25px] ">
+                3
+              </span>{" "}
+              Wait for Delivery
+            </h3>
           </div>
+        </div>
+      </div>
+      {/* Restaurant section */}
+      <div className="mx-auto">
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 text-left mt-8 ml-4">Restaurants</h2>
+        <div className="">
+          <Restaurant />
         </div>
       </div>
     </>
