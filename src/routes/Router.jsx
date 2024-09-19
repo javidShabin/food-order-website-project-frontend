@@ -7,7 +7,6 @@ import ProfilePage from "../pages/user/UserProfile";
 import Home from "../pages/Home";
 import ResDetails from "../pages/user/ResDetails";
 
-
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -16,7 +15,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home/>,
+        element: <Home />,
       },
       {
         path: "signup",
@@ -33,16 +32,16 @@ export const router = createBrowserRouter([
         element: <AuthUser />,
 
         children: [
-            {
-                path: "profile",
-                element: <ProfilePage/>
-            },
-            {
-                path: "res-details/:id",
-                element: <ResDetails/>
-            }
-        ]
-      }
+          {
+            path: "profile",
+            element: <ProfilePage />,
+          },
+          {
+            path: "res-details/:id",
+            element: <ResDetails />,
+          },
+        ],
+      },
     ],
   },
 ]);

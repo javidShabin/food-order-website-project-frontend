@@ -84,7 +84,7 @@ const Home = () => {
       </div>
       {/* Restaurant section */}
       <div className="mx-auto">
-        <h2 className="text-xl sm:text-2xl font-bold mb-4 text-left mt-8 ml-4">Restaurants</h2>
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 text-left mt-11 px-6 ml-4">Restaurants</h2>
         <div className="">
           <Restaurant />
         </div>
