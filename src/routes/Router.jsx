@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
                 element: <ProfilePage/>
             },
             {
-                path: "res-details",
+                path: "res-details/:id",
                 element: <ResDetails/>
             }
         ]
