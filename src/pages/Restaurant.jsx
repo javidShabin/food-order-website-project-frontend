@@ -4,6 +4,9 @@ import { axiosInstants } from "../config/axiosInstants";
 const Restaurant = () => {
   const [restData, setRestData] = useState([]);
 
+  const getRestaurant = () => {
+    alert("Redy")
+  }
   const getRestaurants = async () => {
     try {
       const response = await axiosInstants({
@@ -36,7 +39,7 @@ const Restaurant = () => {
           <h2>{restaurant.name}</h2>
           <h3>{restaurant.address}</h3>
           <div>
-            <button className="py-1 px-2 bg-orange-400 font-semibold rounded-md mt-4">
+            <button onClick={()=>{getRestaurant(restaurant._id)}} className="py-1 px-2 bg-orange-400 font-semibold rounded-md mt-4">
               Explore
             </button>
           </div>
