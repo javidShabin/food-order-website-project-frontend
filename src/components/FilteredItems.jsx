@@ -43,7 +43,7 @@ const FilteredItems = () => {
   return (
     <>
       <div className="category container mx-auto p-4 relative cursor-pointer ">
-        <h2 className="text-2xl font-bold mb-4 text-left mt-8">
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 text-left mt-8">
           What's on your mind
         </h2>
 

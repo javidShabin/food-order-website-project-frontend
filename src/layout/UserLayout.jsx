@@ -5,6 +5,7 @@ import UserHeader from "../components/user/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { axiosInstants } from "../config/axiosInstants";
 import { clearUser, saveUser } from "../redux/features/userSlice";
+import Footer from "../components/Footer";
 
 const UserLayout = () => {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ const UserLayout = () => {
     <div>
       {isUserExist ? <UserHeader /> : <Header />}
       <Outlet />
+      <Footer/>
     </div>
   );
 };

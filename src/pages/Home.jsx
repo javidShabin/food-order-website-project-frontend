@@ -48,21 +48,21 @@ const Home = () => {
 
         <hr className="border-gray-600 border-1 w-[95%] mx-auto mt-16" />
 
-        <h2 className="text-2xl font-bold mb-4 text-left mt-8 ml-4">
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 text-left mt-8 ml-4">
           How its works
         </h2>
         <div className="flex justify-around text-center mt-9 ">
           <div>
-            <img src={cafe} className="w-[70px] mx-auto" />
-            <h3 className="mt-8 text-center font-semibold text-[18px] "><span className="text-orange-400 text-[25px] ">1</span> Select Restaurant</h3>
+            <img src={cafe} className="w-[50px] sm:w-[70px] mx-auto" />
+            <h3 className="mt-2 sm:mt-8 text-center font-semibold text-[15px] sm:text-[18px] "><span className="text-orange-400 text-[20px] sm:text-[25px] ">1</span> Select Restaurant</h3>
           </div>
           <div>
-            <img src={food} className="w-[70px] mx-auto" />
-            <h3 className="mt-8 text-center font-semibold text-[18px] "><span className="text-orange-400 text-[25px] ">2</span> Select Menu</h3>
+            <img src={food} className="w-[50px] sm:w-[70px] mx-auto" />
+            <h3 className="mt-2 sm:mt-8 text-center font-semibold text-[15px] sm:text-[18px] "><span className="text-orange-400 text-[20px] sm:text-[25px] ">2</span> Select Menu</h3>
           </div>
           <div>
-            <img src={delivery} className="w-[70px] mx-auto" />
-            <h3 className="mt-8 text-center font-semibold text-[18px] "><span className="text-orange-400 text-[25px] ">3</span> Wait for Delivery</h3>
+            <img src={delivery} className="w-[50px] sm:w-[70px] mx-auto" />
+            <h3 className="mt-2 sm:mt-8 text-center font-semibold text-[15px] sm:text-[18px] "><span className="text-orange-400 text-[20px] sm:text-[25px] ">3</span> Wait for Delivery</h3>
           </div>
         </div>
       </div>
