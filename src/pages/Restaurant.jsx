@@ -41,7 +41,7 @@ const Restaurant = () => {
           <h2>{restaurant.name}</h2>
           <h3>{restaurant.address}</h3>
           <div>
-            <button onClick={()=>{navigate(`/user/res-details${restaurant._id}`)}} className="py-1 px-4 bg-orange-400 font-semibold text-white rounded-md mt-4 hover:bg-orange-500 transition duration-300 ease-in-out">
+            <button onClick={()=>{navigate(`/user/res-details/${restaurant._id}`)}} className="py-1 px-4 bg-orange-400 font-semibold text-white rounded-md mt-4 hover:bg-orange-500 transition duration-300 ease-in-out">
               Explore
             </button>
           </div>
