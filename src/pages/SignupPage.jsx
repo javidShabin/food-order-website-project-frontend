@@ -20,7 +20,7 @@ export default function SignupPage() {
       console.log(response);
     } catch (error) {
       console.log(error);
-      toast.error("user already exist");
+      toast.error(error.data.message);
     }
   };
 
