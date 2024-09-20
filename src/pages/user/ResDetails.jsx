@@ -51,7 +51,7 @@ const ResDetails = () => {
         </div>
       </div>
       {/* Menu items section */}
-      <div className="mt-8">
+      <div className="mt-7">
         {/* Add menu items */}
       </div>
     </>
