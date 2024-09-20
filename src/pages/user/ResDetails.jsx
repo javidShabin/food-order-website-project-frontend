@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { axiosInstants } from "../../config/axiosInstants";
-import MenuItems from "../../components/user/MenuItems";
 
 const ResDetails = () => {
   const { id } = useParams();
