@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { axiosInstants } from "../../config/axiosInstants";
+import MenuItems from "../../components/user/MenuItems";
 
 const ResDetails = () => {
   const { id } = useParams();
@@ -51,7 +52,7 @@ const ResDetails = () => {
       </div>
       {/* Menu items section */}
       <div className="mt-7">
-        {/* Add menu items */}
+        <MenuItems/>
       </div>
     </>
   );
