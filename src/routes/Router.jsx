@@ -7,6 +7,7 @@ import ProfilePage from "../pages/user/UserProfile";
 import Home from "../pages/Home";
 import ResDetails from "../pages/user/ResDetails";
 import CartPage from "../pages/user/CartPage";
+import Restaurant from "../pages/Restaurant";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: "login",
         element: <LoginPage />,
+      },
+      {
+        path: "restaurant",
+        element: <Restaurant/>
       },
 
       // Logined user

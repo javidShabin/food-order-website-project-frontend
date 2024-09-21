@@ -26,7 +26,7 @@ const UserHeader = () => {
             <li>Home</li>
           </Link>
           <li>About</li>
-          <li>Restaurants</li>
+          <Link to={'/restaurant'}><li>Restaurants</li></Link>
         </ul>
 
         {/* Icons */}
