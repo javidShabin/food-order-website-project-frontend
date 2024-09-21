@@ -16,6 +16,14 @@ const MenuItems = () => {
     }
   };
 
+  const addToCart = async () => {
+    try {
+        alert("Items redy")
+    } catch (error) {
+        
+    }
+  }
+
   useEffect(() => {
     getMenuList();
   }, []);
@@ -45,6 +53,14 @@ const MenuItems = () => {
                 <p className="mt-2 font-bold text-xl text-gray-900">
                   ₹{item.price}
                 </p>
+                <button
+                  onClick={() => {
+                    addToCart(item._id, item.ItemName, item.price); // Passing correct menuItem ID
+                  }}
+                  className="bg-orange-400 py-2 px-5 rounded-lg font-semibold absolute right-2 bottom-2"
+                >
+                  Add to Cart
+                </button>
               </div>
             </div>
           ))}
