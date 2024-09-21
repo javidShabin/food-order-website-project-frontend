@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstants } from "../../config/axiosInstants";
+import toast from "react-hot-toast";
 
 const MenuItems = () => {
   const [menuItems, setMenuItems] = useState([]);
@@ -16,13 +17,30 @@ const MenuItems = () => {
     }
   };
 
-  const addToCart = async () => {
+  const addToCart = async (menuItemId, ItemName, price) => {
+    console.log(price, typeof price);
+    price = Number(price)
+    
     try {
-        alert("Items redy")
+      const response = await axiosInstants({
+        method: "POST",
+        url: "/cart/addCart",
+        data: {
+          items: [
+            {
+              menuItem: menuItemId, // Correctly passing menuItem ID
+              ItemName: ItemName,
+              quantity: 1, // Replace with the desired quantity
+            },
+          ],
+        },
+      });
+      console.log(response);
+      toast.success("Item add in the cart");
     } catch (error) {
-        
+      console.log(error.response?.data || error.message); // Improved error handling
     }
-  }
+  };
 
   useEffect(() => {
     getMenuList();
@@ -45,7 +63,7 @@ const MenuItems = () => {
                 alt={item.name}
                 className="w-full h-48 object-cover"
               />
-              <div className="p-4">
+              <div className="p-4 relative">
                 <h3 className="text-lg font-semibold text-gray-800">
                   {item.name}
                 </h3>
