@@ -31,7 +31,7 @@ const UserHeader = () => {
 
         {/* Icons */}
         <div className="icon flex gap-5 md:gap-10">
-          <Link to="/cart">
+          <Link to="/user/cart">
             <ShoppingBag />
           </Link>
           <Link to="/user/profile">

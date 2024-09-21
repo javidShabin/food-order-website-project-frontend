@@ -6,6 +6,7 @@ import AuthUser from "./protectedRoutes/AuthUser";
 import ProfilePage from "../pages/user/UserProfile";
 import Home from "../pages/Home";
 import ResDetails from "../pages/user/ResDetails";
+import CartPage from "../pages/user/CartPage";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
             path: "res-details/:id",
             element: <ResDetails />,
           },
+          {
+            path: "cart",
+            element: <CartPage/>
+          }
         ],
       },
     ],
