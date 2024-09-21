@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { CircleUser, Menu, ShoppingBag, X } from "lucide-react";
 import { logo } from "../../assets";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const UserHeader = () => {
+  // get profile image from redux
+  const profileImg = useSelector((state) => state.profile.image);
   // Show menubar function state
   const [showMenu, setShowMenu] = useState(false);
 
@@ -26,7 +29,9 @@ const UserHeader = () => {
             <li>Home</li>
           </Link>
           <li>About</li>
-          <Link to={'/restaurant'}><li>Restaurants</li></Link>
+          <Link to={"/restaurant"}>
+            <li>Restaurants</li>
+          </Link>
         </ul>
 
         {/* Icons */}
@@ -35,7 +40,12 @@ const UserHeader = () => {
             <ShoppingBag />
           </Link>
           <Link to="/user/profile">
-            <CircleUser />
+            <div className="rounded-full">
+              <img
+                src={profileImg}
+                className="w-[35px] sm:w-[35px] h-[35px] rounded-full"
+              />
+            </div>
           </Link>
 
           {/* Menu Icon for Mobile */}
@@ -66,4 +76,3 @@ const UserHeader = () => {
 };
 
 export default UserHeader;
-

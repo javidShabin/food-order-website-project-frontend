@@ -4,8 +4,12 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { X } from "lucide-react";
 import ProfileEdit from "../../components/user/ProfileEdit";
+import { useDispatch } from "react-redux";
+import { setProfileImage } from "../../redux/features/profileSlice";
 
 const ProfilePage = () => {
+    // dispatch for pass the profile image to redux
+    const dispatch = useDispatch()
   // show edit profile state
   const [showEdit, setShowEdite] = useState(false);
   // navigate function for user logout
@@ -19,6 +23,7 @@ const ProfilePage = () => {
         method: "GET",
         url: "/user/profile",
       });
+      dispatch(setProfileImage(response.data.image))
       setIsuser(response.data);
     } catch (error) {
       toast.error("Failed to fetch user profile");
