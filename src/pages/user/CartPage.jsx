@@ -11,7 +11,37 @@ const CartPage = () => {
         method: "GET",
         url: "/cart/getCart",
       });
-      console.log(response);
+      setCartItems(response.data.items);
+      setTotalPrice(response.data.totalPrice);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updateCartItemQuantity = async (menuItemId, newQuantity) => {
+    try {
+      if (newQuantity < 1) return; // Prevent quantity below 1
+      const response = await axiosInstants({
+        method: "PUT",
+        url: "/cart/update",
+        data: {
+          items: [{ menuItem: menuItemId, quantity: newQuantity }],
+        },
+      });
+      setCartItems(response.data.items);
+      setTotalPrice(response.data.totalPrice);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const removeCartItem = async (menuItemId) => {
+    try {
+      const response = await axiosInstants({
+        method: "DELETE",
+        url: "/cart/remove",
+        data: { menuItem: menuItemId },
+      });
       setCartItems(response.data.items);
       setTotalPrice(response.data.totalPrice);
     } catch (error) {
@@ -52,15 +82,38 @@ const CartPage = () => {
                     <img
                       src={item.image}
                       alt={item.ItemName}
-                      className="w-16 h-16 object-cover mr-4 rounded"
+                      className="w-16 h-16 object-cover mr-4 rounded-md"
                     />
                     <span className="font-medium">{item.ItemName}</span>
                   </td>
-                  <td className="py-4 px-6">{item.quantity}</td>
+                  <td className="py-4 px-6">
+                    <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden">
+                      <button
+                        className="bg-gray-200 px-2 py-1 text-lg font-bold text-gray-700 hover:bg-gray-300"
+                        onClick={() =>
+                          updateCartItemQuantity(item.menuItem, item.quantity - 1)
+                        }
+                      >
+                        -
+                      </button>
+                      <span className="px-4 text-lg font-semibold">{item.quantity}</span>
+                      <button
+                        className="bg-gray-200 px-2 py-1 text-lg font-bold text-gray-700 hover:bg-gray-300"
+                        onClick={() =>
+                          updateCartItemQuantity(item.menuItem, item.quantity + 1)
+                        }
+                      >
+                        +
+                      </button>
+                    </div>
+                  </td>
                   <td className="py-4 px-6">₹{item.price}</td>
                   <td className="py-4 px-6">₹{item.price * item.quantity}</td>
                   <td className="py-4 px-6 text-right">
-                    <button className="text-red-600 hover:text-red-800">
+                    <button
+                      className="text-red-600 hover:text-red-800"
+                      onClick={() => removeCartItem(item.menuItem)}
+                    >
                       Remove
                     </button>
                   </td>
