@@ -53,6 +53,9 @@ const CartPage = () => {
     getCartItems();
   }, []);
 
+  // Delivery charge
+  const deliveryCharge = 50
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
