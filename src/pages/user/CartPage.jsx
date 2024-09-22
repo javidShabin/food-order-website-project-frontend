@@ -91,16 +91,24 @@ const CartPage = () => {
                       <button
                         className="bg-gray-200 px-2 py-1 text-lg font-bold text-gray-700 hover:bg-gray-300"
                         onClick={() =>
-                          updateCartItemQuantity(item.menuItem, item.quantity - 1)
+                          updateCartItemQuantity(
+                            item.menuItem,
+                            item.quantity - 1
+                          )
                         }
                       >
                         -
                       </button>
-                      <span className="px-4 text-lg font-semibold">{item.quantity}</span>
+                      <span className="px-4 text-lg font-semibold">
+                        {item.quantity}
+                      </span>
                       <button
                         className="bg-gray-200 px-2 py-1 text-lg font-bold text-gray-700 hover:bg-gray-300"
                         onClick={() =>
-                          updateCartItemQuantity(item.menuItem, item.quantity + 1)
+                          updateCartItemQuantity(
+                            item.menuItem,
+                            item.quantity + 1
+                          )
                         }
                       >
                         +
@@ -123,10 +131,21 @@ const CartPage = () => {
           </table>
         </div>
       )}
-      <div className="mt-6 text-right">
-        <h2 className="text-2xl font-bold text-gray-900">
-          Total Price: ₹{totalPrice}
-        </h2>
+      <div className="mt-6 flex justify-left">
+        <div className="shadow-xl w-full max-w-sm py-12 px-6 leading-8 bg-white rounded-lg">
+          <h2 className="text-lg text-gray-700">Total Price: ₹{totalPrice}</h2>
+          <hr className="mt-5" />
+          <h2 className="text-lg text-gray-700 mt-5">
+            Delivery charge: ₹{deliveryCharge}
+          </h2>
+          <hr className="mt-5" />
+          <h2 className="text-2xl font-bold text-gray-900 mt-4">
+            Grand Total: ₹{totalPrice > 0 ? totalPrice + deliveryCharge : 0}
+          </h2>
+          <button className="py-1 px-5 rounded-md bg-orange-400 font-semibold mt-5 ">
+            Proceed to payment
+          </button>
+        </div>
       </div>
     </div>
   );
