@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstants } from "../../config/axiosInstants";
+import { loadStripe } from "@stripe/stripe-js";
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -48,6 +49,23 @@ const CartPage = () => {
       console.log(error);
     }
   };
+
+  const makePayment = async () => {
+    try {
+        const stripe = await loadStripe(import.meta.env.VITE_STRIPE_publisheble_key)
+
+        const session = await axiosInstants({
+            method: "POST",
+            url: "/payment/create-checkout-session",
+            data: {products: cartItems}
+        })
+        const result = stripe.redirectToCheckout({
+            sessionId: session.data.sessionId
+        })
+    } catch (error) {
+        console.log(error)
+    }
+  }
 
   useEffect(() => {
     getCartItems();
@@ -145,8 +163,8 @@ const CartPage = () => {
           <h2 className="text-2xl font-bold text-gray-900 mt-4">
             Grand Total: ₹{totalPrice > 0 ? totalPrice + deliveryCharge : 0}
           </h2>
-          <button className="py-1 px-5 rounded-md bg-orange-400 font-semibold mt-5 ">
-            Proceed to payment
+          <button onClick={makePayment} className="py-1 px-5 rounded-md bg-orange-400 font-semibold mt-5 ">
+            Checkout
           </button>
         </div>
       </div>
