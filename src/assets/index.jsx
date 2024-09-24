@@ -10,6 +10,8 @@ import cat7 from "./cat7.png"
 import cafe from "./cafe.png"
 import food from "./food.png"
 import delivery from "./delivery.png"
+import deliFood from "./deliFood.jpeg"
+import restaurant from "./reastaurant.jpeg"
 
 export {
     logo,
@@ -23,5 +25,7 @@ export {
     cat7,
     cafe,
     food,
-    delivery
+    delivery,
+    deliFood,
+    restaurant
 }

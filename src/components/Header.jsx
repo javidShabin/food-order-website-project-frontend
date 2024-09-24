@@ -19,8 +19,8 @@ const Header = () => {
         {/* Desktop menu */}
         <ul className="hidden sm:flex font-semibold gap-10 sm:gap-16 cursor-pointer">
           <li onClick={() => navigate("/")}>Home</li>
-          <li>About</li>
-          <li>Restaurants</li>
+          <li onClick={()=>{navigate('/about')}}>About</li>
+          <li onClick={()=>{navigate('/restauranr')}}>Restaurants</li>
         </ul>
 
         {/* Join button */}
