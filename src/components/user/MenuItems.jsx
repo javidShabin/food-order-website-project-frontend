@@ -19,8 +19,8 @@ const MenuItems = () => {
 
   const addToCart = async (menuItemId, ItemName, price) => {
     console.log(price, typeof price);
-    price = Number(price)
-    
+    price = Number(price);
+
     try {
       const response = await axiosInstants({
         method: "POST",
@@ -47,44 +47,46 @@ const MenuItems = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-4 lg:p-8">
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
-        Menu Items
+    <div className="container mx-auto p-6 lg:p-10">
+      <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+        Our Menu
       </h2>
       {menuItems.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-10">
           {menuItems.map((item) => (
             <div
               key={item._id}
-              className="bg-white shadow-md rounded-lg overflow-hidden"
+              className="bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 duration-300"
             >
               <img
                 src={item.image}
                 alt={item.name}
-                className="w-full h-48 object-cover"
+                className="w-full h-52 object-cover"
               />
-              <div className="p-4 relative">
-                <h3 className="text-lg font-semibold text-gray-800">
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-800">
                   {item.name}
                 </h3>
-                <p className="text-gray-600">{item.description}</p>
-                <p className="mt-2 font-bold text-xl text-gray-900">
-                  ₹{item.price}
-                </p>
-                <button
-                  onClick={() => {
-                    addToCart(item._id, item.ItemName, item.price); // Passing correct menuItem ID
-                  }}
-                  className="bg-orange-400 py-2 px-5 rounded-lg font-semibold absolute right-2 bottom-2"
-                >
-                  Add to Cart
-                </button>
+                <p className="text-gray-600 mt-2">{item.description}</p>
+                <div className="flex justify-between items-center mt-4">
+                  <p className="text-lg font-bold text-gray-900">
+                    ₹{item.price}
+                  </p>
+                  <button
+                    onClick={() => {
+                      addToCart(item._id, item.ItemName, item.price);
+                    }}
+                    className="bg-orange-500 text-white py-2 px-6 rounded-md hover:bg-orange-600 transition-colors duration-300"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
               </div>
             </div>
           ))}
         </div>
       ) : (
-        <div className="text-gray-600 text-base md:text-lg">
+        <div className="text-gray-600 text-center text-lg">
           No menus available yet.
         </div>
       )}
