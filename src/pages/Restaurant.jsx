@@ -30,7 +30,7 @@ const Restaurant = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center">
+      <div className="flex justify-center">
         <div className="grid grid-cols-4">
           <div className="flex w-52 flex-col gap-4">
             <div className="skeleton h-32 w-full"></div>
