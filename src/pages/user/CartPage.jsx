@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstants } from "../../config/axiosInstants";
 import { loadStripe } from "@stripe/stripe-js";
+import { useNavigate } from "react-router-dom";
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [showBtn, setShowBtn] = useState(false);
+  const [userAddress, setUserAddress] = useState([]);
+
+  console.log(userAddress);
+
+  const navigate = useNavigate();
+
+  let deliveryCharge = 50;
 
   const getCartItems = async () => {
     try {
@@ -21,7 +30,7 @@ const CartPage = () => {
 
   const updateCartItemQuantity = async (menuItemId, newQuantity) => {
     try {
-      if (newQuantity < 1) return; // Prevent quantity below 1
+      if (newQuantity < 1) return;
       const response = await axiosInstants({
         method: "PUT",
         url: "/cart/update",
@@ -50,32 +59,50 @@ const CartPage = () => {
     }
   };
 
+  const getAddress = async () => {
+    try {
+      const response = await axiosInstants({
+        method: "GET",
+        url: "/addresses/address",
+      });
+      setUserAddress(response.data);
+      if (response.data.length > 0) {
+        setShowBtn(true);
+      } else {
+        setShowBtn(false);
+      }
+    } catch (error) {
+      console.error("Failed to fetch address:", error);
+    }
+  };
+
   const makePayment = async () => {
     try {
-        const stripe = await loadStripe(import.meta.env.VITE_STRIPE_publisheble_key)
+      const stripe = await loadStripe(
+        import.meta.env.VITE_STRIPE_publisheble_key
+      );
 
-        const session = await axiosInstants({
-            method: "POST",
-            url: "/payment/create-checkout-session",
-            data: {products: cartItems}
-        })
-        const result = stripe.redirectToCheckout({
-            sessionId: session.data.sessionId
-        })
+      const session = await axiosInstants({
+        method: "POST",
+        url: "/payment/create-checkout-session",
+        data: { products: cartItems },
+      });
+      console.log(session, "====session");
+      const result = stripe.redirectToCheckout({
+        sessionId: session.data.sessionId,
+      });
     } catch (error) {
-        console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     getCartItems();
+    getAddress();
   }, []);
 
-  // Delivery charge
-  const deliveryCharge = 50
-
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 relative ">
       <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
         Your Shopping Cart
       </h1>
@@ -152,7 +179,7 @@ const CartPage = () => {
           </table>
         </div>
       )}
-      <div className="mt-6 flex justify-left">
+      <div className="mt-6 flex justify-between">
         <div className="shadow-xl w-full max-w-sm py-12 px-6 leading-8 bg-white rounded-lg">
           <h2 className="text-lg text-gray-700">Total Price: ₹{totalPrice}</h2>
           <hr className="mt-5" />
@@ -163,9 +190,23 @@ const CartPage = () => {
           <h2 className="text-2xl font-bold text-gray-900 mt-4">
             Grand Total: ₹{totalPrice > 0 ? totalPrice + deliveryCharge : 0}
           </h2>
-          <button onClick={makePayment} className="py-1 px-5 rounded-md bg-orange-400 font-semibold mt-5 ">
-            Checkout
-          </button>
+          {showBtn ? (
+            <button
+              onClick={makePayment}
+              className="py-1 px-5 rounded-md bg-orange-400 font-semibold mt-5 "
+            >
+              Check out
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                navigate("/user/address");
+              }}
+              className="py-1 px-5 rounded-md bg-orange-400 font-semibold mt-5 "
+            >
+              Add address
+            </button>
+          )}
         </div>
       </div>
     </div>
