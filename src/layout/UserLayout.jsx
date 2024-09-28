@@ -33,14 +33,18 @@ const UserLayout = () => {
   }, [location.pathname]);
 
   if (loading) {
-    return <div>Loading...</div>; // Optionally show a loading indicator
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <span className="loading loading-spinner text-warning"></span>
+      </div>
+    ); // Optionally show a loading indicator
   }
 
   return (
     <div>
       {isUserExist ? <UserHeader /> : <Header />}
       <Outlet />
-      <Footer/>
+      <Footer />
     </div>
   );
 };
