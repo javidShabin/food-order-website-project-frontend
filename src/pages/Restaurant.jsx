@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 const Restaurant = () => {
   const [restData, setRestData] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   // navigate function for navigate restaurant detauls page
   const navigate = useNavigate();
@@ -18,7 +17,6 @@ const Restaurant = () => {
       });
       console.log(response.data);
       setRestData(response.data);
-      setLoading;
     } catch (error) {
       console.log(error);
     }
@@ -27,39 +25,6 @@ const Restaurant = () => {
   useEffect(() => {
     getRestaurants();
   }, []);
-
-  if (loading) {
-    return (
-      <div className="flex justify-center">
-        <div className="grid grid-cols-4">
-          <div className="flex w-52 flex-col gap-4">
-            <div className="skeleton h-32 w-full"></div>
-            <div className="skeleton h-4 w-28"></div>
-            <div className="skeleton h-4 w-full"></div>
-            <div className="skeleton h-4 w-full"></div>
-          </div>
-          <div className="flex w-52 flex-col gap-4">
-            <div className="skeleton h-32 w-full"></div>
-            <div className="skeleton h-4 w-28"></div>
-            <div className="skeleton h-4 w-full"></div>
-            <div className="skeleton h-4 w-full"></div>
-          </div>
-          <div className="flex w-52 flex-col gap-4">
-            <div className="skeleton h-32 w-full"></div>
-            <div className="skeleton h-4 w-28"></div>
-            <div className="skeleton h-4 w-full"></div>
-            <div className="skeleton h-4 w-full"></div>
-          </div>
-          <div className="flex w-52 flex-col gap-4">
-            <div className="skeleton h-32 w-full"></div>
-            <div className="skeleton h-4 w-28"></div>
-            <div className="skeleton h-4 w-full"></div>
-            <div className="skeleton h-4 w-full"></div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
