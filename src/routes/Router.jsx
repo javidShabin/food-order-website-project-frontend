@@ -9,6 +9,9 @@ import ResDetails from "../pages/user/ResDetails";
 import CartPage from "../pages/user/CartPage";
 import Restaurant from "../pages/Restaurant";
 import About from "../pages/About";
+import PaymentSuccess from "../components/user/Success";
+import PaymentCancelled from "../components/user/Cancel";
+import Address from "../pages/user/Address";
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +57,18 @@ export const router = createBrowserRouter([
           {
             path: "cart",
             element: <CartPage/>
+          },
+          {
+            path: "payment/success",
+            element: <PaymentSuccess/>
+          },
+          {
+            path: "payment/cancel",
+            element: <PaymentCancelled/>
+          },
+          {
+            path: "address",
+            element: <Address/>
           }
         ],
       },
