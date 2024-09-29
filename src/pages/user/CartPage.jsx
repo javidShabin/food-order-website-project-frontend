@@ -76,6 +76,8 @@ const CartPage = () => {
       }
     } catch (error) {
       console.error("Failed to fetch address:", error);
+    }finally{
+        setLoading(false)
     }
   };
 
