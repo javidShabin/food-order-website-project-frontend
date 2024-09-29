@@ -6,16 +6,17 @@ import { useNavigate } from "react-router-dom";
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [loading, setLoading] = useState(true);
   const [showBtn, setShowBtn] = useState(false);
   const [userAddress, setUserAddress] = useState([]);
-  const [loading, setLoading] = useState(false); // Loading state
-  const [paymentLoading, setPaymentLoading] = useState(false); // Loading state for payment
+
+  console.log(userAddress);
 
   const navigate = useNavigate();
+
   let deliveryCharge = 50;
 
   const getCartItems = async () => {
-    setLoading(true); // Start loading
     try {
       const response = await axiosInstants({
         method: "GET",
@@ -25,15 +26,12 @@ const CartPage = () => {
       setTotalPrice(response.data.totalPrice);
     } catch (error) {
       console.log(error);
-    } finally {
-      setLoading(false); // Stop loading
     }
   };
 
   const updateCartItemQuantity = async (menuItemId, newQuantity) => {
-    if (newQuantity < 1) return;
-    setLoading(true); // Start loading when updating quantity
     try {
+      if (newQuantity < 1) return;
       const response = await axiosInstants({
         method: "PUT",
         url: "/cart/update",
@@ -46,12 +44,11 @@ const CartPage = () => {
     } catch (error) {
       console.log(error);
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false); // Set loading to false after checking user
     }
   };
 
   const removeCartItem = async (menuItemId) => {
-    setLoading(true); // Start loading when removing item
     try {
       const response = await axiosInstants({
         method: "DELETE",
@@ -62,29 +59,27 @@ const CartPage = () => {
       setTotalPrice(response.data.totalPrice);
     } catch (error) {
       console.log(error);
-    } finally {
-      setLoading(false); // Stop loading
     }
   };
 
   const getAddress = async () => {
-    setLoading(true); // Start loading when fetching address
     try {
       const response = await axiosInstants({
         method: "GET",
         url: "/addresses/address",
       });
       setUserAddress(response.data);
-      setShowBtn(response.data.length > 0);
+      if (response.data.length > 0) {
+        setShowBtn(true);
+      } else {
+        setShowBtn(false);
+      }
     } catch (error) {
       console.error("Failed to fetch address:", error);
-    } finally {
-      setLoading(false); // Stop loading
     }
   };
 
   const makePayment = async () => {
-    setPaymentLoading(true); // Start loading for payment
     try {
       const stripe = await loadStripe(
         import.meta.env.VITE_STRIPE_publisheble_key
@@ -95,14 +90,12 @@ const CartPage = () => {
         url: "/payment/create-checkout-session",
         data: { products: cartItems },
       });
-
-      await stripe.redirectToCheckout({
+      console.log(session, "====session");
+      const result = stripe.redirectToCheckout({
         sessionId: session.data.sessionId,
       });
     } catch (error) {
       console.log(error);
-    } finally {
-      setPaymentLoading(false); // Stop loading
     }
   };
 
@@ -111,18 +104,19 @@ const CartPage = () => {
     getAddress();
   }, []);
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <span className="loading loading-spinner text-warning"></span>
+      </div>
+    ); // Optionally show a loading indicator
+  }
   return (
-    <div className="container mx-auto p-4 relative">
+    <div className="container mx-auto p-4 relative ">
       <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
         Your Shopping Cart
       </h1>
-
-      {/* Show loading spinner when loading */}
-      {loading ? (
-        <div className="flex justify-center items-center h-screen">
-          <span className="loading loading-spinner text-warning"></span>
-        </div>
-      ) : cartItems.length === 0 ? (
+      {cartItems.length === 0 ? (
         <p className="text-lg text-gray-600 text-center">Your cart is empty.</p>
       ) : (
         <div className="overflow-x-auto">
@@ -160,7 +154,6 @@ const CartPage = () => {
                             item.quantity - 1
                           )
                         }
-                        disabled={loading}
                       >
                         -
                       </button>
@@ -175,7 +168,6 @@ const CartPage = () => {
                             item.quantity + 1
                           )
                         }
-                        disabled={loading}
                       >
                         +
                       </button>
@@ -187,7 +179,6 @@ const CartPage = () => {
                     <button
                       className="text-red-600 hover:text-red-800"
                       onClick={() => removeCartItem(item.menuItem)}
-                      disabled={loading}
                     >
                       Remove
                     </button>
@@ -198,7 +189,6 @@ const CartPage = () => {
           </table>
         </div>
       )}
-
       <div className="mt-6 flex justify-between">
         <div className="shadow-xl w-full max-w-sm py-12 px-6 leading-8 bg-white rounded-lg">
           <h2 className="text-lg text-gray-700">Total Price: ₹{totalPrice}</h2>
@@ -210,19 +200,19 @@ const CartPage = () => {
           <h2 className="text-2xl font-bold text-gray-900 mt-4">
             Grand Total: ₹{totalPrice > 0 ? totalPrice + deliveryCharge : 0}
           </h2>
-
           {showBtn ? (
             <button
               onClick={makePayment}
-              className="py-1 px-5 rounded-md bg-orange-400 font-semibold mt-5"
-              disabled={paymentLoading}
+              className="py-1 px-5 rounded-md bg-orange-400 font-semibold mt-5 "
             >
-              {paymentLoading ? "Processing..." : "Check out"}
+              Check out
             </button>
           ) : (
             <button
-              onClick={() => navigate("/user/address")}
-              className="py-1 px-5 rounded-md bg-orange-400 font-semibold mt-5"
+              onClick={() => {
+                navigate("/user/address");
+              }}
+              className="py-1 px-5 rounded-md bg-orange-400 font-semibold mt-5 "
             >
               Add address
             </button>
