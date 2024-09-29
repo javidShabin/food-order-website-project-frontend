@@ -119,7 +119,9 @@ const CartPage = () => {
 
       {/* Show loading spinner when loading */}
       {loading ? (
-        <p className="text-center text-lg text-gray-600">Loading...</p>
+        <div className="flex justify-center items-center h-screen">
+          <span className="loading loading-spinner text-warning"></span>
+        </div>
       ) : cartItems.length === 0 ? (
         <p className="text-lg text-gray-600 text-center">Your cart is empty.</p>
       ) : (
