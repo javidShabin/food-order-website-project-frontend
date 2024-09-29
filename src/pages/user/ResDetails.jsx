@@ -27,9 +27,9 @@ const ResDetails = () => {
   if (!resDetails) {
     return (
       <div className="flex justify-center items-center h-screen">
-        Loading...
+        <span className="loading loading-spinner text-warning"></span>
       </div>
-    );
+    ); // Optionally show a loading indicator
   }
 
   return (
@@ -52,7 +52,7 @@ const ResDetails = () => {
       </div>
       {/* Menu items section */}
       <div className="mt-7">
-        <MenuItems/>
+        <MenuItems />
       </div>
     </>
   );
